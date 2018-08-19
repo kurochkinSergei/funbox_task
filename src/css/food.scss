@@ -1,0 +1,71 @@
+.food-wrapper {
+    z-index: 1000;
+
+
+}
+
+.food {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    box-sizing: border-box;
+    width: 320px;
+    height: 480px;
+    padding: 20px 50px;
+    // border: 4px solid $curious-blue;
+    // border-radius: 12px;
+    // // 13.125 = 42px / 320px 8.75 = 42px / 480px
+    // clip-path: polygon(42px 0, 100% 0, 100% 100%, 0 100%, 0px 42px);
+    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    // background-color: $concrete;
+
+    // &:after {
+    //     content: '';
+    //     position: absolute;
+    //     top: -47px;
+    //     left: -64px;
+    //     display: block;
+    //     width: 88px;
+    //     height: 88px;
+    //     z-index: 1500;
+    //     box-sizing: border-box;
+    //     background: transparent;
+    //     border: 4px solid $curious-blue;
+    //     transform: rotate(45deg);
+    // }
+
+    &-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        fill: $concrete;
+        stroke: $curious-blue;
+    }
+
+    &-category {
+        margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 19px;
+        color: $dove-gray;
+        text-align: left;    
+    }
+
+    &-brand {
+        color: black;
+        font-size: 48px;
+        line-height: 56px;
+        font-weight: bold;
+        text-align: left;
+        margin-left: -0.065em;
+    }
+
+    &-taste {
+        color: black;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: bold;
+    }
+}
