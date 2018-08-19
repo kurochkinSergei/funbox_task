@@ -1,7 +1,5 @@
 .food-wrapper {
     z-index: 1000;
-
-
 }
 
 .food {
@@ -12,11 +10,16 @@
     width: 320px;
     height: 480px;
     padding: 20px 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-size: 368px 360px;
+    background-position: -24px 208px;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    background-image: url('../img/Photo.png');
     // border: 4px solid $curious-blue;
-    // border-radius: 12px;
+    
     // // 13.125 = 42px / 320px 8.75 = 42px / 480px
     // clip-path: polygon(42px 0, 100% 0, 100% 100%, 0 100%, 0px 42px);
-    // font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     // background-color: $concrete;
 
     // &:after {
@@ -38,7 +41,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
+        z-index: -1000;
         width: 100%;
         height: 100%;
         fill: $concrete;
@@ -67,5 +70,28 @@
         font-size: 24px;
         line-height: 28px;
         font-weight: bold;
+    }
+
+    &-weight {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 384px;
+        left: 224px;
+        width: 80px;
+        height: 80px;
+        color: white;
+        border-radius: 40px;
+        background-color: $curious-blue;
+
+        &__number {
+            font-size: 42px;
+        }
+
+        &__unit {
+            font-size: 21px;
+        }
     }
 }

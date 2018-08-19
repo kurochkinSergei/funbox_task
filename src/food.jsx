@@ -36,9 +36,16 @@ class Food extends Component {
                         { taste }
                     </div>
                     {/* description blocks here */}
+                    {/* as separate component */}
                     <div className="food-weight">
-                        { `${weight} кг` }
+                        <div className="food-weight__number">
+                            { weight.toString().replace(/\./g, ',') }
+                        </div>
+                        <div className="food-weight__unit">
+                            кг
+                        </div>
                     </div>
+                    {/* as separate component */}
                     <svg className="food-bg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 324 484" width="0" height="0" preserveAspectRatio="none">
                         <path fillRule="evenodd" strokeWidth="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" />
                     </svg>
