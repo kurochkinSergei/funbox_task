@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MainTitle from './main_title';
 
 // The data, an array of foods objects
 // const data = {};
 
 ReactDOM.render(
-    <div className="content-wrapper">
-        <h1 className="title">Ты сегодня покормил кота?</h1>
+    <section className="content-wrapper">
+        <MainTitle title="А ты сегодня покормил кота?" />
         {/* foods components mapped form data here */}
-    </div>,
+    </section>,
     document.getElementById('react-container'),
 );
