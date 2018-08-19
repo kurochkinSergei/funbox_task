@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const extractSass = new ExtractTextPlugin({
     filename: 'style.css',
@@ -8,7 +9,7 @@ const extractSass = new ExtractTextPlugin({
 module.exports = {
     mode: 'development',
     context: __dirname,
-    entry: ['./src/index.js', './src/css/index.scss'],
+    entry: ['./src/index.jsx', './src/css/index.scss'],
     output: {
         path: path.resolve(__dirname, './dist/assets'),
         filename: 'bundle.js',
@@ -16,18 +17,17 @@ module.exports = {
         sourceMapFilename: 'bundle.map',
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.jsx'],
     },
     devtool: '#source-map',
     module: {
         rules: [{
-            test: /\.js$/,
-            include: path.resolve(__dirname, 'src'),
+            test: /\.(js|jsx)$/,
             exclude: /(node_modules)/,
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'babel-preset-stage-0', 'react'],
+                    presets: ['env', 'react'],
                 },
             }],
         },
@@ -36,9 +36,24 @@ module.exports = {
             loader: extractSass.extract({
                 use: [
                     { loader: 'css-loader' },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: [
+                                autoprefixer({
+                                    browsers: ['ie >= 8', 'last 4 version'],
+                                }),
+                            ],
+                            sourceMap: true,
+                        },
+                    },
                     { loader: 'sass-loader' }],
                 fallback: 'style-loader',
             }),
+        },
+        {
+            test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+            loader: 'url-loader?limit=100000',
         },
         ],
     },
