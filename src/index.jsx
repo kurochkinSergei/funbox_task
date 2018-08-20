@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import MainTitle from './main_title';
-import Food from './food';
+import Item from './Item';
 
 // The data, an array of foods objects
 const catFoods = [
@@ -21,8 +21,7 @@ ReactDOM.render(
     <section className="content-wrapper">
         <MainTitle title="А ты сегодня покормил кота?" />
         { catFoods.map(catFood => (
-            <Food key={Date.now()} {...catFood} />))}
-        {/* foods components mapped form data here */}
+            <Item key={Date.now()} {...catFood} />))}
     </section>,
     document.getElementById('react-container'),
 );
