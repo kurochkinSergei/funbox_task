@@ -37,8 +37,39 @@
     //     border: 4px solid $curious-blue;
     //     transform: rotate(45deg);
     // }
-    &-text {
+    &-description {
         padding: 16px 46px;
+        
+        &__category {
+            margin-bottom: 5px;
+            font-size: 16px;
+            line-height: 19px;
+            color: $dove-gray;
+            text-align: left;    
+        }
+    
+        &__brand {
+            color: black;
+            font-size: 48px;
+            line-height: 56px;
+            font-weight: bold;
+            text-align: left;
+            margin-left: -0.065em;
+        }
+    
+        &__taste {
+            color: black;
+            font-size: 24px;
+            line-height: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        &__text {
+            font-size: 14px;
+            line-height: 16px;
+            color: $dove-gray;
+            font-family: inherit;
+        }
     }
 
     &__background {
@@ -50,30 +81,6 @@
         height: 100%;
         fill: $concrete;
         stroke: $curious-blue;
-    }
-    
-    &__category {
-        margin-bottom: 5px;
-        font-size: 16px;
-        line-height: 19px;
-        color: $dove-gray;
-        text-align: left;    
-    }
-
-    &__brand {
-        color: black;
-        font-size: 48px;
-        line-height: 56px;
-        font-weight: bold;
-        text-align: left;
-        margin-left: -0.065em;
-    }
-
-    &__taste {
-        color: black;
-        font-size: 24px;
-        line-height: 28px;
-        font-weight: bold;
     }
 
     &-weight {
