@@ -1,3 +1,12 @@
+.items-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    & .item-wrapper {
+        margin: 0 40px; 
+    }
+}
+
 .item {
     position: relative;
     overflow: hidden;
@@ -44,6 +53,10 @@
         font-size: 13px;
         line-height: 15px;
         text-align: center;
+
+        &_disabled {
+            color: $lemon;
+        }
     }
 
     &-text-content {
@@ -54,7 +67,11 @@
             font-size: 16px;
             line-height: 19px;
             color: $dove-gray;
-            text-align: left;    
+            text-align: left;
+            
+            &_alt {
+                color: $cerise-red;
+            }
         }
     
         &__brand {
@@ -79,6 +96,10 @@
             color: $dove-gray;
             font-family: inherit;
         }
+
+        &_disabled {
+            opacity: 0.5;
+        }
     }
 
     &__background {
@@ -90,6 +111,22 @@
         height: 100%;
         fill: $concrete;
         stroke: $curious-blue;
+
+        &_hovered {
+            stroke: $piction-blue;    
+        }
+
+        &_selected {
+            stroke: $razzmatazz;
+            
+            &._hovered {
+                stroke: $cerise-red;    
+            }
+        }
+
+        &_disabled {
+            stroke: $nobel;
+        }
     }
 
     &-weight {
@@ -112,6 +149,22 @@
 
         &__unit {
             font-size: 21px;
+        }
+
+        &_hovered {
+            background-color: $piction-blue;
+        }
+
+        &_selected {
+            background-color: $razzmatazz;
+            
+            &._hovered {
+                background-color: $cerise-red;    
+            }
+        }
+
+        &_disabled {
+            background-color: $nobel;
         }
     }
 }

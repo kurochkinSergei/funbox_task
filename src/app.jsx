@@ -13,17 +13,51 @@ class App extends Component {
             items: [
                 {
                     weight: 0.5,
-                    inStock: true,
-                    isSelected: false,
-                    isHovered: false,
+                    status: {
+                        isDisabled: false,
+                        isSelected: false,
+                        isHovered: true,
+                    },
                     description: {
                         category: 'Сказочное заморское яство',
                         brand: 'Нямушка',
                         taste: 'с фуа-гра',
                         portionsNum: 10,
                         micesNum: 1,
+                        contents: 'Печень утки разварная с артишоками.',
+                    },
+                },
+                {
+                    weight: 0.5,
+                    status: {
+                        isDisabled: false,
+                        isSelected: true,
+                        isHovered: true,
+                    },
+                    description: {
+                        category: 'Сказочное заморское яство',
+                        brand: 'Нямушка',
+                        taste: 'с рыбой',
+                        portionsNum: 40,
+                        micesNum: 2,
+                        contents: 'Головы щучьи с чесноком, да свежайшая сёмгушка.',
+                    },
+                },
+                {
+                    weight: 0.5,
+                    status: {
+                        isDisabled: true,
+                        isSelected: false,
+                        isHovered: false,
+                    },
+                    description: {
+                        category: 'Сказочное заморское яство',
+                        brand: 'Нямушка',
+                        taste: 'с фуа-гра',
+                        portionsNum: 100,
+                        micesNum: 5,
                         additionalText: 'заказчик доволен',
-                        contents: 'Печень утки разварная с артишоками',
+                        contents: 'Филе цыплят с трюфелями в бульоне.',
                     },
                 },
             ],
@@ -35,8 +69,10 @@ class App extends Component {
         return (
             <section className="content-wrapper">
                 <MainTitle title="А ты сегодня покормил кота?" />
-                { items.map(catFood => (
-                    <Item key={uuidv1} {...catFood} />))}
+                <div className="items-wrapper">
+                    { items.map(catFood => (
+                        <Item key={uuidv1()} {...catFood} />))}
+                </div>
             </section>
         );
     }
