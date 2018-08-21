@@ -1,0 +1,19 @@
+.text-button {
+    cursor: pointer;
+    color: $curious-blue;
+    border-bottom: 1px dashed $curious-blue;
+    
+    &-wrapper {
+        cursor: pointer;
+        color: $curious-blue;
+
+        &:hover {
+            color: $piction-blue;    
+        }
+    }
+
+    &:hover {
+        color: $piction-blue;
+        border-bottom: 1px dashed $piction-blue;    
+    } 
+}

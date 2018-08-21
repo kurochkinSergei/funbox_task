@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextButton from './text_button';
 
 const Item = ({
     weight, description,
 }) => (
     <div className="item-wrapper">
         <div className="item">
-            <ItemDescription {...description} />
+            <ItemTextContent {...description} />
             <Weight weight={weight} />
             <ItemBackground />
         </div>
-        <div className="">
-            Чего сидишь? Порадуй котэ, купи.
+        <div className="item-description">
+            Чего&nbsp;сидишь?&nbsp;Порадуй&nbsp;котэ,&nbsp;
+            <TextButton text="купи" punctMark="." />
         </div>
     </div>
 );
@@ -50,35 +52,35 @@ Weight.propTypes = {
 };
 
 // block with item titles and text
-const ItemDescription = ({
+const ItemTextContent = ({
     category, brand, taste, portionsNum, micesNum, additionalText,
 }) => (
-    <div className="item-description">
-        <div className="item-description__category">
+    <div className="item-text-content">
+        <div className="item-text-content__category">
             { category }
         </div>
-        <h2 className="item-description__brand">
+        <h2 className="item-text-content__brand">
             { brand }
         </h2>
-        <h3 className="item-description__taste">
+        <h3 className="item-text-content__taste">
             { taste }
         </h3>
-        <p className="item-description__text">
+        <p className="item-text-content__text">
             {/* TODO: слова склоняются  */}
             {/* bold when selected <b>{portionsNum}</b> */}
             {portionsNum}
             &nbsp;порций
         </p>
-        <p className="item-description__text">
+        <p className="item-text-content__text">
             {/* bold when selected <b>{micesNum}</b> */}
             {micesNum}
             &nbsp;мышей в подарок
         </p>
-        <p className="item-description__text">{additionalText}</p>
+        <p className="item-text-content__text">{additionalText}</p>
     </div>
 );
 
-ItemDescription.propTypes = {
+ItemTextContent.propTypes = {
     category: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
     taste: PropTypes.string.isRequired,
@@ -87,7 +89,7 @@ ItemDescription.propTypes = {
     additionalText: PropTypes.string,
 };
 
-ItemDescription.defaultProps = {
+ItemTextContent.defaultProps = {
     portionsNum: 0,
     micesNum: 0,
     additionalText: '',

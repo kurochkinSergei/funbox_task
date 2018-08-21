@@ -1,7 +1,3 @@
-.item-wrapper {
-    z-index: 1000;
-}
-
 .item {
     position: relative;
     overflow: hidden;
@@ -11,13 +7,17 @@
     height: 480px;
     padding: 4px;
     // padding: 20px 50px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-size: 368px 360px;
     background-position: -24px 208px;
     background-repeat: no-repeat;
     border-radius: 12px;
     background-image: url('../img/Photo.png');
     background-clip: content-box;
+
+    &-wrapper {
+        z-index: 1000;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
     
     // // 13.125 = 42px / 320px 8.75 = 42px / 480px
     // clip-path: polygon(42px 0, 100% 0, 100% 100%, 0 100%, 0px 42px);
@@ -37,7 +37,16 @@
     //     border: 4px solid $curious-blue;
     //     transform: rotate(45deg);
     // }
+
     &-description {
+        margin-top: 14px;
+        color: white;
+        font-size: 13px;
+        line-height: 15px;
+        text-align: center;
+    }
+
+    &-text-content {
         padding: 16px 46px;
         
         &__category {
