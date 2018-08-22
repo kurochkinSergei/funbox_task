@@ -144,7 +144,7 @@
         &_selected {
             stroke: $razzmatazz;
             
-            &._hovered {
+            &.item__background_hovered {
                 stroke: $cerise-red;    
             }
         }
@@ -183,7 +183,7 @@
         &_selected {
             background-color: $razzmatazz;
             
-            &._hovered {
+            &.item-weight_hovered {
                 background-color: $cerise-red;    
             }
         }

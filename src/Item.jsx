@@ -9,7 +9,7 @@ const checkForObject = (props, propName) => (
 );
 
 const Item = ({
-    keyProp, weight, status, description, onSelection,
+    keyProp, weight, status, description, onSelection, onHover,
 }) => {
     const { isDisabled } = status;
     return (
@@ -20,6 +20,8 @@ const Item = ({
                 className={`item ${isDisabled && 'item_disabled'}`}
                 onClick={() => onSelection(keyProp)}
                 onKeyDown={() => {}}
+                onMouseEnter={() => onHover(keyProp)}
+                onMouseLeave={() => onHover(keyProp)}
             >
                 <ItemTextContent {...description} {...status} />
                 <Weight weight={weight} {...status} />
@@ -42,6 +44,7 @@ Item.propTypes = {
     description: checkForObject,
     status: checkForObject,
     onSelection: PropTypes.func.isRequired,
+    onHover: PropTypes.func.isRequired,
 };
 
 Item.defaultProps = {

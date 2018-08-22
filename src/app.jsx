@@ -9,6 +9,7 @@ class App extends Component {
         super(props);
 
         this.state = {
+            mainTitle: 'А ты сегодня покормил кота?',
             // The data, an array of foods objects
             items: [
                 {
@@ -18,6 +19,7 @@ class App extends Component {
                         isDisabled: false,
                         isSelected: false,
                         isHovered: false,
+                        keepHover: false,
                     },
                     description: {
                         category: 'Сказочное заморское яство',
@@ -35,6 +37,7 @@ class App extends Component {
                         isDisabled: false,
                         isSelected: true,
                         isHovered: false,
+                        keepHover: false,
                     },
                     description: {
                         category: 'Сказочное заморское яство',
@@ -52,6 +55,7 @@ class App extends Component {
                         isDisabled: true,
                         isSelected: false,
                         isHovered: false,
+                        keepHover: false,
                     },
                     description: {
                         category: 'Сказочное заморское яство',
@@ -67,6 +71,7 @@ class App extends Component {
         };
 
         this.selectItem = this.selectItem.bind(this);
+        this.hoverItem = this.hoverItem.bind(this);
     }
 
     selectItem(key) {
@@ -76,8 +81,12 @@ class App extends Component {
                 const { status } = item;
                 const { isSelected } = status;
                 const newStatus = isSelected
-                    ? { ...status, isSelected: false }
-                    : { ...status, isSelected: true };
+                    ? {
+                        ...status, isSelected: false, isHovered: true, keepHover: false,
+                    }
+                    : {
+                        ...status, isSelected: true, isHovered: false, keepHover: true,
+                    };
                 return { ...item, status: newStatus };
             }
 
@@ -87,14 +96,44 @@ class App extends Component {
         this.setState({ items: updatedItems });
     }
 
+    hoverItem(key) {
+        const { items } = this.state;
+        const updatedItems = items.map((item) => {
+            if (item.key === key && !item.status.isDisabled) {
+                const { status } = item;
+                const { isHovered } = status;
+                const { keepHover } = status;
+                let newStatus = {};
+
+                if (!keepHover) {
+                    newStatus = isHovered
+                        ? { ...status, isHovered: false }
+                        : { ...status, isHovered: true };
+                } else {
+                    newStatus = { ...status, keepHover: false };
+                }
+                return { ...item, status: newStatus };
+            }
+
+            return item;
+        });
+        this.setState({ items: updatedItems });
+    }
+
     render() {
+        const { mainTitle } = this.state;
         const { items } = this.state;
         return (
             <section className="content-wrapper">
-                <MainTitle title="А ты сегодня покормил кота?" />
+                <MainTitle title={mainTitle} />
                 <div className="items-wrapper">
                     { items.map(catFood => (
-                        <Item keyProp={catFood.key} {...catFood} onSelection={this.selectItem} />))}
+                        <Item
+                            keyProp={catFood.key}
+                            {...catFood}
+                            onSelection={this.selectItem}
+                            onHover={this.hoverItem}
+                        />))}
                 </div>
             </section>
         );
