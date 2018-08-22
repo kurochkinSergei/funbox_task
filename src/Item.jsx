@@ -10,16 +10,19 @@ const checkForObject = (props, propName) => (
 
 const Item = ({
     weight, status, description,
-}) => (
-    <div className="item-wrapper">
-        <div className="item">
-            <ItemTextContent {...description} {...status} />
-            <Weight weight={weight} {...status} />
-            <ItemBackground {...status} />
+}) => {
+    const { isDisabled } = status;
+    return (
+        <div className="item-wrapper">
+            <div className={`item ${isDisabled && 'item_disabled'}`}>
+                <ItemTextContent {...description} {...status} />
+                <Weight weight={weight} {...status} />
+                <ItemBackground {...status} />
+            </div>
+            <ItemDescription {...description} {...status} />
         </div>
-        <ItemDescription {...description} {...status} />
-    </div>
-);
+    );
+};
 
 Item.propTypes = {
     // TODO make weight not required
@@ -147,7 +150,6 @@ ItemDescription.propTypes = {
     isDisabled: PropTypes.bool.isRequired,
 };
 
-
 // svg image used as item background
 const ItemBackground = ({ isSelected, isHovered, isDisabled }) => (
     <svg
@@ -166,7 +168,6 @@ const ItemBackground = ({ isSelected, isHovered, isDisabled }) => (
         <path fillRule="evenodd" strokeWidth="4" d="M310 482H14c-6.63 0-12-5.37-12-12V45L45 2h265c6.63 0 12 5.37 12 12v456c0 6.63-5.37 12-12 12z" />
     </svg>
 );
-
 
 ItemBackground.propTypes = {
     isSelected: PropTypes.bool.isRequired,
