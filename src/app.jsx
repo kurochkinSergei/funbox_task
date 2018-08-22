@@ -12,11 +12,12 @@ class App extends Component {
             // The data, an array of foods objects
             items: [
                 {
+                    key: uuidv1(),
                     weight: 0.5,
                     status: {
                         isDisabled: false,
                         isSelected: false,
-                        isHovered: true,
+                        isHovered: false,
                     },
                     description: {
                         category: 'Сказочное заморское яство',
@@ -28,11 +29,12 @@ class App extends Component {
                     },
                 },
                 {
-                    weight: 0.5,
+                    key: uuidv1(),
+                    weight: 2,
                     status: {
                         isDisabled: false,
                         isSelected: true,
-                        isHovered: true,
+                        isHovered: false,
                     },
                     description: {
                         category: 'Сказочное заморское яство',
@@ -44,7 +46,8 @@ class App extends Component {
                     },
                 },
                 {
-                    weight: 0.5,
+                    key: uuidv1(),
+                    weight: 5,
                     status: {
                         isDisabled: true,
                         isSelected: false,
@@ -62,6 +65,26 @@ class App extends Component {
                 },
             ],
         };
+
+        this.selectItem = this.selectItem.bind(this);
+    }
+
+    selectItem(key) {
+        const { items } = this.state;
+        const updatedItems = items.map((item) => {
+            if (item.key === key && !item.status.isDisabled) {
+                const { status } = item;
+                const { isSelected } = status;
+                const newStatus = isSelected
+                    ? { ...status, isSelected: false }
+                    : { ...status, isSelected: true };
+                return { ...item, status: newStatus };
+            }
+
+            return item;
+        });
+
+        this.setState({ items: updatedItems });
     }
 
     render() {
@@ -71,7 +94,7 @@ class App extends Component {
                 <MainTitle title="А ты сегодня покормил кота?" />
                 <div className="items-wrapper">
                     { items.map(catFood => (
-                        <Item key={uuidv1()} {...catFood} />))}
+                        <Item keyProp={catFood.key} {...catFood} onSelection={this.selectItem} />))}
                 </div>
             </section>
         );

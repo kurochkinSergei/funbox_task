@@ -1,5 +1,6 @@
 .text-button {
     cursor: pointer;
+    user-select: none;
     color: $curious-blue;
     border-bottom: 1px dashed $curious-blue;
     

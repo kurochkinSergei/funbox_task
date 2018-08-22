@@ -9,17 +9,28 @@ const checkForObject = (props, propName) => (
 );
 
 const Item = ({
-    weight, status, description,
+    keyProp, weight, status, description, onSelection,
 }) => {
     const { isDisabled } = status;
     return (
         <div className="item-wrapper">
-            <div className={`item ${isDisabled && 'item_disabled'}`}>
+            <div
+                aria-hidden
+                role="button"
+                className={`item ${isDisabled && 'item_disabled'}`}
+                onClick={() => onSelection(keyProp)}
+                onKeyDown={() => {}}
+            >
                 <ItemTextContent {...description} {...status} />
                 <Weight weight={weight} {...status} />
                 <ItemBackground {...status} />
             </div>
-            <ItemDescription {...description} {...status} />
+            <ItemDescription
+                keyProp={keyProp}
+                {...description}
+                {...status}
+                onSelection={onSelection}
+            />
         </div>
     );
 };
@@ -27,8 +38,10 @@ const Item = ({
 Item.propTypes = {
     // TODO make weight not required
     weight: PropTypes.number.isRequired,
+    keyProp: PropTypes.string.isRequired,
     description: checkForObject,
     status: checkForObject,
+    onSelection: PropTypes.func.isRequired,
 };
 
 Item.defaultProps = {
@@ -121,13 +134,13 @@ ItemTextContent.defaultProps = {
 };
 
 const ItemDescription = ({
-    taste, contents, isSelected, isDisabled,
+    keyProp, taste, contents, isSelected, isDisabled, onSelection,
 }) => (
     <div className="item-description">
         {!isSelected && !isDisabled && (
             <span className="item-description_enabled">
                 Чего&nbsp;сидишь?&nbsp;Порадуй&nbsp;котэ,&nbsp;
-                <TextButton text="купи" punctMark="." />
+                <TextButton keyProp={keyProp} clickHandler={onSelection} text="купи" punctMark="." />
             </span>
         )}
         {isSelected && !isDisabled
@@ -145,9 +158,11 @@ const ItemDescription = ({
 
 ItemDescription.propTypes = {
     taste: PropTypes.string.isRequired,
+    keyProp: PropTypes.string.isRequired,
     contents: PropTypes.string.isRequired,
     isSelected: PropTypes.bool.isRequired,
     isDisabled: PropTypes.bool.isRequired,
+    onSelection: PropTypes.func.isRequired,
 };
 
 // svg image used as item background

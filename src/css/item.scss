@@ -15,6 +15,7 @@
     width: 320px;
     height: 480px;
     padding: 20px 50px;
+    cursor: pointer;
     // background-size: 368px 360px;
     // background-position: -24px 208px;
     // background-repeat: no-repeat;
@@ -42,9 +43,11 @@
       }
 
         &_disabled {
+            cursor: default;
+
             &:after {
-            opacity: 0.5;
-        }
+                opacity: 0.5;
+            }
       }
 
     &-wrapper {
