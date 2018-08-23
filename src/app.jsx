@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainTitle from './main_title';
-import Item from './Item';
+import Item from './item';
 
 const uuidv1 = require('uuid/v1');
 
@@ -9,7 +9,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            mainTitle: 'А ты сегодня покормил кота?',
+            mainTitle: 'Ты сегодня покормил кота?',
             // The data, an array of foods objects
             items: [
                 {
@@ -25,8 +25,8 @@ class App extends Component {
                         category: 'Сказочное заморское яство',
                         brand: 'Нямушка',
                         taste: 'с фуа-гра',
-                        portionsNum: 10,
-                        micesNum: 1,
+                        portions: '10 порций',
+                        mices: 'мышь в подарок',
                         contents: 'Печень утки разварная с артишоками.',
                     },
                 },
@@ -43,8 +43,8 @@ class App extends Component {
                         category: 'Сказочное заморское яство',
                         brand: 'Нямушка',
                         taste: 'с рыбой',
-                        portionsNum: 40,
-                        micesNum: 2,
+                        portions: '40 порций',
+                        mices: '2 мыши в подарок',
                         contents: 'Головы щучьи с чесноком, да свежайшая сёмгушка.',
                     },
                 },
@@ -61,8 +61,8 @@ class App extends Component {
                         category: 'Сказочное заморское яство',
                         brand: 'Нямушка',
                         taste: 'с фуа-гра',
-                        portionsNum: 100,
-                        micesNum: 5,
+                        portions: '100 порций',
+                        mices: '5 мышей в подарок',
                         additionalText: 'заказчик доволен',
                         contents: 'Филе цыплят с трюфелями в бульоне.',
                     },
