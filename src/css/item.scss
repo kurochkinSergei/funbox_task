@@ -3,7 +3,7 @@
     flex-direction: row;
 
     & .item-wrapper {
-        margin: 0 40px; 
+        margin: 0 40px 20px 40px; 
     }
 }
 
@@ -54,7 +54,7 @@
         z-index: 1000;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     }
-    
+    // clip-path background. Does not work in IE
     // // 13.125 = 42px / 320px 8.75 = 42px / 480px
     // clip-path: polygon(42px 0, 100% 0, 100% 100%, 0 100%, 0px 42px);
     // background-color: $concrete;
@@ -80,6 +80,7 @@
         font-size: 13px;
         line-height: 15px;
         text-align: center;
+        user-select: none;
 
         &_disabled {
             color: $lemon;
@@ -90,9 +91,10 @@
         &__category {
             margin-bottom: 5px;
             font-size: 16px;
-            line-height: 19px;
+            line-height: 22px;
             color: $dove-gray;
             text-align: left;
+            user-select: none;
             
             &_alt {
                 color: $cerise-red;
@@ -105,6 +107,7 @@
             line-height: 56px;
             font-weight: bold;
             text-align: left;
+            user-select: none;
             margin-left: -0.065em;
         }
     
@@ -114,12 +117,14 @@
             line-height: 28px;
             font-weight: bold;
             margin-bottom: 15px;
+            user-select: none;
         }
         &__text {
             font-size: 14px;
             line-height: 16px;
             color: $dove-gray;
             font-family: inherit;
+            user-select: none;
         }
 
         &_disabled {
@@ -167,13 +172,15 @@
         color: white;
         border-radius: 40px;
         background-color: $curious-blue;
+        user-select: none;
 
         &__number {
             font-size: 42px;
+            margin-top: 4px;
         }
 
         &__unit {
-            font-size: 21px;
+            font-size: 20px;
         }
 
         &_hovered {
