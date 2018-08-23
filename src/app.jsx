@@ -74,7 +74,7 @@ class App extends Component {
         this.hoverItem = this.hoverItem.bind(this);
     }
 
-    selectItem(key) {
+    selectItem(key, toKeepHover = true) {
         const { items } = this.state;
         const updatedItems = items.map((item) => {
             if (item.key === key && !item.status.isDisabled) {
@@ -85,7 +85,7 @@ class App extends Component {
                         ...status, isSelected: false, isHovered: true, keepHover: false,
                     }
                     : {
-                        ...status, isSelected: true, isHovered: false, keepHover: true,
+                        ...status, isSelected: true, isHovered: false, keepHover: toKeepHover,
                     };
                 return { ...item, status: newStatus };
             }

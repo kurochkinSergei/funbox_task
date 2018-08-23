@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const TextButton = ({
     keyProp, text, punctMark, clickHandler,
 }) => (
-    <span onClick={() => clickHandler(keyProp)} aria-hidden role="button" className="text-button-wrapper">
+    <span onClick={() => clickHandler(keyProp, false)} aria-hidden role="button" className="text-button-wrapper">
         <span className="text-button">{text}</span>
         {punctMark}
     </span>
